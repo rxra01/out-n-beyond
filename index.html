@@ -1652,6 +1652,291 @@
 
 
   <!-- =========================================================================
+       PAGE 9: ADMIN OPERATIONS & MANAGEMENT PORTAL (#admin)
+       ========================================================================= -->
+  <main id="view-admin" class="page-view">
+    <!-- Admin Lock Screen (Shown when unauthenticated) -->
+    <section class="pin-lock-container" id="adminLockScreen">
+      <div class="pin-lock-card">
+        <div style="width: 54px; height: 54px; border-radius: var(--radius-full); background: var(--color-primary-container); border: 2px solid var(--color-border-dark); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 28px; color: var(--color-on-primary-container);">lock</span>
+        </div>
+        
+        <div>
+          <h2 class="text-headline-sm" style="margin-bottom: 4px;">Staff Operations Portal</h2>
+          <p class="text-body-sm" style="color: var(--color-on-surface-variant);">Enter 4-digit security PIN to access live bookings, orders &amp; customer logs.</p>
+        </div>
+
+        <div class="pin-dots-row" id="pinInputBox">
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="pin-keypad-grid">
+          <button type="button" class="pin-key" data-digit="1">1</button>
+          <button type="button" class="pin-key" data-digit="2">2</button>
+          <button type="button" class="pin-key" data-digit="3">3</button>
+          <button type="button" class="pin-key" data-digit="4">4</button>
+          <button type="button" class="pin-key" data-digit="5">5</button>
+          <button type="button" class="pin-key" data-digit="6">6</button>
+          <button type="button" class="pin-key" data-digit="7">7</button>
+          <button type="button" class="pin-key" data-digit="8">8</button>
+          <button type="button" class="pin-key" data-digit="9">9</button>
+          <button type="button" class="pin-key special-key" id="pinClearKey">CLR</button>
+          <button type="button" class="pin-key" data-digit="0">0</button>
+          <button type="button" class="pin-key special-key" id="pinBackspaceKey">
+            <span class="material-symbols-outlined" style="font-size: 20px;">backspace</span>
+          </button>
+        </div>
+
+        <p class="text-body-sm" style="color: var(--color-outline); font-size: 11px; margin-top: 4px;">
+          Default Passcode: <strong>1234</strong> (Customizable in Settings)
+        </p>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard Main View (Shown when authenticated) -->
+    <section class="site-container" id="adminDashboardView" style="display: none; padding: var(--space-xl) var(--space-md) var(--space-4xl);">
+      <!-- Dashboard Top Header Bar -->
+      <div class="neo-card neo-card-cream" style="padding: var(--space-md) var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-lg);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-secondary); color: #fff; border: 1.5px solid var(--color-border-dark); display: flex; align-items: center; justify-content: center; font-size: 22px;">
+            📊
+          </div>
+          <div>
+            <h1 class="text-title-lg" style="margin: 0;">Operations &amp; Customer Intelligence</h1>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--color-on-surface-variant); margin-top: 2px;">
+              <span class="badge badge-veg" style="padding: 1px 6px; font-size: 10px;">LIVE SYNC</span>
+              <span id="adminLiveClock">--:--:-- IST</span>
+              <span>• Hindustan Park Hub</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-card btn-sm" id="exportReservationsCsvBtn">
+            <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+            <span>Export Bookings CSV</span>
+          </button>
+          <button class="btn btn-card btn-sm" id="exportOrdersCsvBtn">
+            <span class="material-symbols-outlined" style="font-size: 16px;">receipt_long</span>
+            <span>Export Orders CSV</span>
+          </button>
+          <button class="btn btn-mocha btn-sm" id="adminLogoutBtn">
+            <span class="material-symbols-outlined" style="font-size: 16px;">lock</span>
+            <span>Lock</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 KPI Metrics Row -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-lg);">
+        <div class="neo-card" style="padding: var(--space-md);">
+          <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-title); color: var(--color-outline); font-weight: 700; display: block; margin-bottom: 4px;">Total Table Bookings</span>
+          <div class="font-display" id="kpiTotalBookings" style="font-size: 2rem; color: var(--color-border-dark); font-weight: 800;">0</div>
+          <span class="text-body-sm" style="color: var(--color-status-veg); font-size: 11.5px;">✓ Live customer reservations</span>
+        </div>
+
+        <div class="neo-card" style="padding: var(--space-md);">
+          <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-title); color: var(--color-outline); font-weight: 700; display: block; margin-bottom: 4px;">Active Kitchen Orders</span>
+          <div class="font-display" id="kpiActiveOrders" style="font-size: 2rem; color: var(--color-accent-sunset); font-weight: 800;">0</div>
+          <span class="text-body-sm" style="color: var(--color-on-surface-variant); font-size: 11.5px;">⚡ New &amp; Cooking</span>
+        </div>
+
+        <div class="neo-card" style="padding: var(--space-md);">
+          <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-title); color: var(--color-outline); font-weight: 700; display: block; margin-bottom: 4px;">Recorded Gross Revenue</span>
+          <div class="font-display" id="kpiTotalRevenue" style="font-size: 2rem; color: var(--color-primary-container); font-weight: 800;">₹0</div>
+          <span class="text-body-sm" style="color: var(--color-status-veg); font-size: 11.5px;">💰 Online checkouts + Takeaway</span>
+        </div>
+
+        <div class="neo-card" style="padding: var(--space-md);">
+          <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-title); color: var(--color-outline); font-weight: 700; display: block; margin-bottom: 4px;">New Inquiries</span>
+          <div class="font-display" id="kpiNewInquiries" style="font-size: 2rem; color: var(--color-tertiary); font-weight: 800;">0</div>
+          <span class="text-body-sm" style="color: var(--color-on-surface-variant); font-size: 11.5px;">✉️ Event &amp; contact leads</span>
+        </div>
+      </div>
+
+      <!-- Admin Tab Switcher -->
+      <div class="admin-tabs-bar">
+        <button type="button" class="admin-nav-tab active" data-admin-tab="overview">
+          <span class="material-symbols-outlined" style="font-size: 18px;">grid_view</span> Overview
+        </button>
+        <button type="button" class="admin-nav-tab" data-admin-tab="reservations">
+          <span class="material-symbols-outlined" style="font-size: 18px;">table_bar</span> Reservations Manager
+        </button>
+        <button type="button" class="admin-nav-tab" data-admin-tab="orders">
+          <span class="material-symbols-outlined" style="font-size: 18px;">skillet</span> Kitchen Orders (KDS)
+        </button>
+        <button type="button" class="admin-nav-tab" data-admin-tab="inquiries">
+          <span class="material-symbols-outlined" style="font-size: 18px;">mail</span> Contact Inquiries
+        </button>
+        <button type="button" class="admin-nav-tab" data-admin-tab="activity">
+          <span class="material-symbols-outlined" style="font-size: 18px;">browse_activity</span> Customer Activity Log
+        </button>
+        <button type="button" class="admin-nav-tab" data-admin-tab="settings">
+          <span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings &amp; PIN
+        </button>
+      </div>
+
+      <!-- TAB 1: OVERVIEW -->
+      <div class="admin-tab-pane" id="adminPane-overview">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-lg);">
+          <!-- Recent Bookings Box -->
+          <div class="neo-card" style="padding: var(--space-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid var(--color-outline-variant); padding-bottom: 8px;">
+              <h3 class="text-title-lg">Recent Table Bookings</h3>
+              <button class="btn btn-card btn-sm" onclick="document.querySelector('[data-admin-tab=reservations]').click()">View All</button>
+            </div>
+            <div id="overviewRecentBookings"></div>
+          </div>
+
+          <!-- Recent Orders Box -->
+          <div class="neo-card" style="padding: var(--space-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid var(--color-outline-variant); padding-bottom: 8px;">
+              <h3 class="text-title-lg">Recent Orders</h3>
+              <button class="btn btn-card btn-sm" onclick="document.querySelector('[data-admin-tab=orders]').click()">View KDS</button>
+            </div>
+            <div id="overviewRecentOrders"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: RESERVATIONS -->
+      <div class="admin-tab-pane" id="adminPane-reservations" style="display: none;">
+        <div class="neo-card" style="padding: var(--space-lg);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: var(--space-md);">
+            <div style="display: flex; gap: 8px; flex: 1; max-width: 480px;">
+              <input type="text" class="neo-input" id="adminResSearch" placeholder="Search by guest name, phone, booking ID..." style="height: 38px; font-size: 13px;" />
+              <select class="neo-select" id="adminResZoneFilter" style="height: 38px; width: auto; font-size: 13px;">
+                <option value="all">All Zones</option>
+                <option value="Roastery">Indoor Roastery</option>
+                <option value="Window">Bay Window</option>
+                <option value="Veranda">Garden Veranda</option>
+                <option value="Library">Library</option>
+                <option value="Patio">Patio</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-table-wrapper">
+            <table class="admin-data-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Guest Name &amp; Phone</th>
+                  <th>Slot &amp; Party</th>
+                  <th>Seating Zone</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="adminReservationsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: KITCHEN & ORDERS (KDS) -->
+      <div class="admin-tab-pane" id="adminPane-orders" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: var(--space-md);">
+          <input type="text" class="neo-input" id="adminOrderSearch" placeholder="Search orders by customer name, phone, or order ID..." style="max-width: 420px; height: 38px; font-size: 13px;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-md);" id="adminOrdersGrid"></div>
+      </div>
+
+      <!-- TAB 4: CONTACT INQUIRIES -->
+      <div class="admin-tab-pane" id="adminPane-inquiries" style="display: none;">
+        <div class="neo-card" style="padding: var(--space-lg);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+            <h3 class="text-title-lg">Customer Messages &amp; Event Leads</h3>
+          </div>
+
+          <div class="admin-table-wrapper">
+            <table class="admin-data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Customer Name &amp; Email</th>
+                  <th>Message / Inquiry</th>
+                  <th>Received</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminInquiriesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: CUSTOMER ACTIVITY STREAM -->
+      <div class="admin-tab-pane" id="adminPane-activity" style="display: none;">
+        <div class="neo-card" style="padding: var(--space-lg); max-width: 780px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid var(--color-outline-variant); padding-bottom: 8px;">
+            <div>
+              <h3 class="text-title-lg">Live Customer Audit Stream</h3>
+              <p class="text-body-sm" style="color: var(--color-on-surface-variant); font-size: 12px;">Real-time feed of browsing actions, bookings, and cart checkout attempts.</p>
+            </div>
+            <button class="btn btn-card btn-sm" onclick="AdminController.renderActivityTab()">
+              <span class="material-symbols-outlined" style="font-size: 16px;">refresh</span> Refresh
+            </button>
+          </div>
+
+          <div id="adminActivityStream" style="max-height: 520px; overflow-y: auto; padding-right: 8px;"></div>
+        </div>
+      </div>
+
+      <!-- TAB 6: SETTINGS -->
+      <div class="admin-tab-pane" id="adminPane-settings" style="display: none;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-lg);">
+          <!-- Change PIN Card -->
+          <div class="neo-card" style="padding: var(--space-lg);">
+            <h3 class="text-title-lg" style="margin-bottom: 8px;">Change Admin PIN</h3>
+            <p class="text-body-sm" style="color: var(--color-on-surface-variant); margin-bottom: 12px;">Update the 4-digit keypad passcode required to open this portal.</p>
+            <form id="adminChangePinForm" style="display: flex; flex-direction: column; gap: 10px;">
+              <div>
+                <label class="neo-label">Current PIN</label>
+                <input class="neo-input" type="password" id="currentPinInput" placeholder="••••" maxlength="6" required />
+              </div>
+              <div>
+                <label class="neo-label">New PIN (4-6 digits)</label>
+                <input class="neo-input" type="password" id="newPinInput" placeholder="••••" maxlength="6" required />
+              </div>
+              <div>
+                <label class="neo-label">Confirm New PIN</label>
+                <input class="neo-input" type="password" id="confirmPinInput" placeholder="••••" maxlength="6" required />
+              </div>
+              <button type="submit" class="btn btn-primary" style="margin-top: 6px;">
+                <span>Update Security PIN</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Data Factory Reset Card -->
+          <div class="neo-card neo-card-cream" style="padding: var(--space-lg); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 class="text-title-lg" style="margin-bottom: 8px;">Data Management &amp; Factory Reset</h3>
+              <p class="text-body-sm" style="color: var(--color-on-surface-variant); line-height: 1.6; margin-bottom: 14px;">
+                Reset all local database tables (bookings, online orders, inquiries, activity logs) back to fresh realistic demonstration data.
+              </p>
+            </div>
+            <button type="button" class="btn btn-mocha" id="adminResetSeedDataBtn" style="width: 100%;">
+              <span class="material-symbols-outlined">restart_alt</span>
+              <span>Reset to Sample Data</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =========================================================================
        FLOATING STICKY BOTTOM CART DOCK
        ========================================================================= -->
   <aside class="cart-dock" id="globalCartDock" aria-label="Order Bag Dock">
@@ -1926,10 +2211,14 @@
       <!-- Copyright & Legal -->
       <div style="border-top: 1.5px solid var(--color-border-dark); margin-top: var(--space-2xl); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--color-on-surface-variant);">
         <p>© 2025 Out n Beyond Cafe &amp; Bistro LLP. Handcrafted with warmth in Kolkata.</p>
-        <div style="display: flex; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
           <span>FSSAI Lic: 12823019000412</span>
           <span>Privacy Policy</span>
           <span>Terms of Service</span>
+          <a href="#admin" data-path="admin" style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-primary-container); font-weight: 700; text-decoration: underline;">
+            <span class="material-symbols-outlined" style="font-size: 15px;">lock</span>
+            <span>Staff Portal</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1937,12 +2226,14 @@
 
   <!-- Scripts: Modular Architecture -->
   <script src="js/data.js"></script>
+  <script src="js/db.js"></script>
   <script src="js/router.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/reservations.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/reviews.js"></script>
   <script src="js/order.js"></script>
+  <script src="js/admin.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

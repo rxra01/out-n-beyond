@@ -234,6 +234,12 @@ const ReservationController = {
     }
 
     const bookingId = '#OB-' + Math.floor(1000 + Math.random() * 9000);
+    this.formData.bookingId = bookingId;
+
+    // Save to Database
+    if (window.CafeDB) {
+      window.CafeDB.addReservation(this.formData);
+    }
 
     // Populate Voucher Modal
     const vId = document.getElementById('voucherBookingId');

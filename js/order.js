@@ -212,6 +212,25 @@ const OrderController = {
     const discount = (this.appliedCoupon === 'BEYOND10') ? Math.round(itemSubtotal * 0.10) : 0;
     const grandTotal = itemSubtotal + gst + packagingFee + deliveryFee - discount;
 
+    // Save to Cafe Database
+    if (window.CafeDB) {
+      window.CafeDB.addOrder({
+        customerName: name,
+        customerPhone: phone,
+        orderType: this.orderType,
+        deliveryAddress: (this.orderType === 'delivery') ? address : 'Bistro Counter Pickup (Hindustan Park)',
+        items: cart,
+        subtotal: itemSubtotal,
+        gst: gst,
+        packagingFee: packagingFee,
+        deliveryFee: deliveryFee,
+        discount: discount,
+        couponUsed: this.appliedCoupon,
+        grandTotal: grandTotal,
+        orderNotes: notes
+      });
+    }
+
     let itemsSummary = cart.map(i => `• ${i.name} x ${i.quantity} (₹${i.price * i.quantity})`).join('\n');
 
     const message = `*NEW CAFE ORDER — OUT N BEYOND*\n------------------------\n*Customer:* ${name}\n*Phone:* +91 ${phone}\n*Order Type:* ${this.orderType.toUpperCase()}\n${this.orderType === 'delivery' ? `*Address:* ${address}\n` : ''}${notes ? `*Notes:* ${notes}\n` : ''}------------------------\n*Items Ordered:*\n${itemsSummary}\n------------------------\n*Subtotal:* ₹${itemSubtotal}\n*GST (5%):* ₹${gst}\n*Packaging:* ₹${packagingFee}\n*Delivery:* ₹${deliveryFee}\n${discount > 0 ? `*Discount (${this.appliedCoupon}):* -₹${discount}\n` : ''}*TOTAL BILL:* ₹${grandTotal}\n------------------------\nPlease confirm dispatch time & payment link. Thank you!`;
@@ -222,7 +241,7 @@ const OrderController = {
     window.open(whatsappUrl, '_blank');
 
     if (window.showToast) {
-      window.showToast('🚀 Order dispatched via WhatsApp! Opening chat...');
+      window.showToast('🚀 Order recorded and dispatched via WhatsApp!');
     }
   }
 };

@@ -449,3 +449,189 @@
   transform: translateY(0);
   opacity: 1;
 }
+
+/* ==========================================================================
+   ADMIN PORTAL & OPERATIONS STYLES
+   ========================================================================== */
+
+/* PIN Keypad & Lock Screen */
+.pin-lock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: var(--space-xl) var(--space-md);
+}
+
+.pin-lock-card {
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--color-surface-card);
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.pin-dots-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin: var(--space-sm) 0;
+}
+
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-border-dark);
+  background-color: transparent;
+  transition: all var(--transition-fast);
+}
+
+.pin-dot.filled {
+  background-color: var(--color-primary-container);
+  transform: scale(1.15);
+}
+
+.pin-keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.pin-key {
+  height: 54px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-cream);
+  border: 1.5px solid var(--color-border-dark);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-border-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.pin-key:hover {
+  background-color: var(--color-accent-terracotta-soft);
+  transform: translateY(-1px);
+}
+
+.pin-key:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.pin-key.special-key {
+  font-size: 13px;
+  font-family: var(--font-title);
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--color-on-surface-variant);
+}
+
+.pin-key.special-key:hover {
+  background-color: rgba(43, 33, 25, 0.05);
+  color: var(--color-border-dark);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Admin Data Tables */
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.admin-data-table th {
+  background-color: var(--color-surface-cream);
+  border-bottom: 2px solid var(--color-border-dark);
+  padding: 12px 14px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--color-border-dark);
+  white-space: nowrap;
+}
+
+.admin-data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(43, 33, 25, 0.08);
+  vertical-align: middle;
+}
+
+.admin-data-table tr:hover td {
+  background-color: rgba(224, 90, 54, 0.03);
+}
+
+/* Admin Tabs */
+.admin-tabs-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--color-border-dark);
+  margin-bottom: var(--space-lg);
+}
+
+.admin-nav-tab {
+  padding: 8px 16px;
+  font-family: var(--font-title);
+  font-size: 13.5px;
+  font-weight: 700;
+  background-color: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.admin-nav-tab:hover {
+  color: var(--color-border-dark);
+  background-color: var(--color-surface-cream);
+}
+
+.admin-nav-tab.active {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+  border-color: var(--color-border-dark);
+  box-shadow: var(--shadow-xs);
+}
+

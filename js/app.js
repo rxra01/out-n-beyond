@@ -65,15 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.OrderController = OrderController;
     OrderController.init();
   }
+  if (typeof AdminController !== 'undefined') {
+    window.AdminController = AdminController;
+    AdminController.init();
+  }
 
   // Listen to route changes
   window.addEventListener('routeChanged', (e) => {
     const route = e.detail.route;
+    if (window.CafeDB) {
+      window.CafeDB.logActivity(`Customer navigated to #${route} page`);
+    }
     if (route === 'order-online' && typeof OrderController !== 'undefined') {
       OrderController.renderCheckout();
     }
     if (route === 'menu' && typeof MenuController !== 'undefined') {
       MenuController.renderMenuItems();
+    }
+    if (route === 'admin' && typeof AdminController !== 'undefined') {
+      AdminController.checkSessionAuth();
     }
   });
 
@@ -108,6 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!name || !email || !msg) {
         window.showToast('Please fill out all required fields');
         return;
+      }
+
+      if (window.CafeDB) {
+        window.CafeDB.addInquiry({
+          name: name,
+          email: email,
+          message: msg
+        });
       }
 
       window.showToast(`Thank you ${name}! Your inquiry has been sent to our Kolkata team.`);

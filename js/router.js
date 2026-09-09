@@ -11,7 +11,8 @@ const Router = {
     'reviews': 'view-reviews',
     'reservations': 'view-reservations',
     'order-online': 'view-order-online',
-    'contact': 'view-contact'
+    'contact': 'view-contact',
+    'admin': 'view-admin'
   },
 
   defaultRoute: 'home',
@@ -59,6 +60,7 @@ const Router = {
     if (hash === 'reserve-table' || hash === 'reserve' || hash === 'booking') hash = 'reservations';
     if (hash === 'order' || hash === 'cart') hash = 'order-online';
     if (hash === 'about') hash = 'story';
+    if (hash === 'dashboard' || hash === 'portal' || hash === 'staff') hash = 'admin';
     
     if (!hash || !this.routes[hash]) {
       hash = this.defaultRoute;
@@ -104,7 +106,8 @@ const Router = {
       'reviews': "9,482+ Kolkata Diner Reviews | Out n Beyond Cafe",
       'reservations': "Table Reservations | Out n Beyond Cafe",
       'order-online': "Online Ordering & Delivery | Out n Beyond Cafe",
-      'contact': "Location & Operating Hours | Out n Beyond Cafe"
+      'contact': "Location & Operating Hours | Out n Beyond Cafe",
+      'admin': "Admin Portal & Operations Suite | Out n Beyond Cafe"
     };
     document.title = titleMap[hash] || "Out n Beyond Cafe & Bistro";
 
