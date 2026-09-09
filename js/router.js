@@ -112,3 +112,7 @@ const Router = {
     window.dispatchEvent(new CustomEvent('routeChanged', { detail: { route: hash } }));
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.Router = Router;
+}

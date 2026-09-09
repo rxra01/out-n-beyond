@@ -260,3 +260,7 @@ const ReservationController = {
     }
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.ReservationController = ReservationController;
+}

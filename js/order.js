@@ -226,3 +226,7 @@ const OrderController = {
     }
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.OrderController = OrderController;
+}

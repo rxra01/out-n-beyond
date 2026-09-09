@@ -397,3 +397,7 @@ const MenuController = {
     }
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.MenuController = MenuController;
+}

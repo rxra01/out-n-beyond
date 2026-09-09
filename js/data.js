@@ -452,3 +452,7 @@ const BusinessData = {
     }
   ]
 };
+
+if (typeof window !== 'undefined') {
+  window.CafeData = CafeData;
+}

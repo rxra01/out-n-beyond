@@ -168,3 +168,7 @@ const ReviewsController = {
     }
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.ReviewsController = ReviewsController;
+}

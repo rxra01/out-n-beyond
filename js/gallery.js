@@ -170,3 +170,7 @@ const GalleryController = {
     modal.classList.add('open');
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.GalleryController = GalleryController;
+}

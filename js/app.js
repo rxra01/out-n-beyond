@@ -40,21 +40,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initialize Modules
-  if (window.Router) Router.init();
-  if (window.MenuController) MenuController.init();
-  if (window.ReservationController) ReservationController.init();
-  if (window.GalleryController) GalleryController.init();
-  if (window.ReviewsController) ReviewsController.init();
-  if (window.OrderController) OrderController.init();
+  // Initialize Modules & attach globally
+  if (typeof Router !== 'undefined') {
+    window.Router = Router;
+    Router.init();
+  }
+  if (typeof MenuController !== 'undefined') {
+    window.MenuController = MenuController;
+    MenuController.init();
+  }
+  if (typeof ReservationController !== 'undefined') {
+    window.ReservationController = ReservationController;
+    ReservationController.init();
+  }
+  if (typeof GalleryController !== 'undefined') {
+    window.GalleryController = GalleryController;
+    GalleryController.init();
+  }
+  if (typeof ReviewsController !== 'undefined') {
+    window.ReviewsController = ReviewsController;
+    ReviewsController.init();
+  }
+  if (typeof OrderController !== 'undefined') {
+    window.OrderController = OrderController;
+    OrderController.init();
+  }
 
   // Listen to route changes
   window.addEventListener('routeChanged', (e) => {
     const route = e.detail.route;
-    if (route === 'order-online' && window.OrderController) {
+    if (route === 'order-online' && typeof OrderController !== 'undefined') {
       OrderController.renderCheckout();
     }
-    if (route === 'menu' && window.MenuController) {
+    if (route === 'menu' && typeof MenuController !== 'undefined') {
       MenuController.renderMenuItems();
     }
   });
