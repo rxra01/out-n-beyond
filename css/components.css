@@ -1,0 +1,451 @@
+/* ==========================================================================
+   OUT N BEYOND CAFE & BISTRO — COMPONENT STYLES
+   ========================================================================== */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.03em;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border-dark);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+  user-select: none;
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--color-border-dark) !important;
+}
+
+.btn-primary {
+  background-color: var(--color-accent-terracotta);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-sunset);
+  color: var(--color-border-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+  background-color: #557c5a;
+}
+
+.btn-mocha {
+  background-color: var(--color-primary-container);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-mocha:hover {
+  background-color: var(--color-primary);
+}
+
+.btn-card {
+  background-color: var(--color-surface-card);
+  color: var(--color-border-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-card:hover {
+  background-color: var(--color-surface-container);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-border-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-surface-cream);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 0.85rem 1.75rem;
+  font-size: 16px;
+  border-radius: var(--radius-lg);
+}
+
+/* Badges & Sticker Chips */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-dark);
+  box-shadow: var(--shadow-xs);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.badge-veg {
+  background-color: var(--color-accent-matcha-soft);
+  color: var(--color-status-veg);
+  border-color: var(--color-status-veg);
+}
+
+.badge-nonveg {
+  background-color: var(--color-accent-terracotta-soft);
+  color: var(--color-status-nonveg);
+  border-color: var(--color-status-nonveg);
+}
+
+.badge-egg {
+  background-color: #fff3e0;
+  color: var(--color-status-egg);
+  border-color: var(--color-status-egg);
+}
+
+.badge-sunset {
+  background-color: var(--color-accent-sunset);
+  color: var(--color-border-dark);
+}
+
+.badge-matcha {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.badge-terracotta {
+  background-color: var(--color-tertiary-fixed);
+  color: var(--color-tertiary);
+}
+
+.badge-mocha {
+  background-color: var(--color-surface-container);
+  color: var(--color-primary-container);
+}
+
+/* Sticker Rotations */
+.sticker-tilt-left {
+  transform: rotate(-2deg);
+}
+
+.sticker-tilt-right {
+  transform: rotate(2deg);
+}
+
+/* Cards */
+.neo-card {
+  background-color: var(--color-surface-card);
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.neo-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.neo-card-cream {
+  background-color: var(--color-surface-cream);
+}
+
+.neo-card-parchment {
+  background-color: var(--color-surface-parchment);
+}
+
+/* Form Controls */
+.neo-input,
+.neo-select,
+.neo-textarea {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-surface-card);
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.neo-textarea {
+  height: auto;
+  min-height: 100px;
+  padding: var(--space-sm) var(--space-md);
+  resize: vertical;
+}
+
+.neo-input:focus,
+.neo-select:focus,
+.neo-textarea:focus {
+  border-color: var(--color-primary-container);
+  box-shadow: 4px 4px 0px var(--color-primary-container);
+}
+
+.neo-label {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-border-dark);
+  margin-bottom: var(--space-xxs);
+}
+
+/* Dietary & Filter Pills */
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border-dark);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  background-color: var(--color-surface-card);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  background-color: var(--color-surface-container);
+}
+
+.filter-tab.active {
+  background-color: var(--color-primary-container);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-pill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-dark);
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  background-color: var(--color-surface-card);
+  color: var(--color-on-surface);
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-pill-chip:hover {
+  background-color: var(--color-surface-container-high);
+}
+
+.filter-pill-chip.active {
+  outline: 2px solid var(--color-primary-container);
+  font-weight: 800;
+}
+
+/* Dietary Indicators */
+.veg-indicator {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-status-veg);
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.veg-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-status-veg);
+}
+
+.nonveg-indicator {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-status-nonveg);
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.nonveg-indicator-triangle {
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-bottom: 7px solid var(--color-status-nonveg);
+}
+
+.egg-indicator {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--color-status-egg);
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.egg-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-status-egg);
+}
+
+/* Ticker Marquee */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-accent-sunset);
+  color: var(--color-border-dark);
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--color-border-dark);
+  user-select: none;
+}
+
+.ticker-content {
+  display: flex;
+  white-space: nowrap;
+  gap: var(--space-lg);
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Modal Overlay & Backdrop */
+.neo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(35, 26, 18, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.neo-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.neo-modal-container {
+  background-color: var(--color-surface-card);
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 750px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform var(--transition-bounce);
+}
+
+.neo-modal-backdrop.open .neo-modal-container {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-cream);
+  border: 1.5px solid var(--color-border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  z-index: 10;
+  transition: background-color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-accent-terracotta-soft);
+}
+
+/* Toast Notifications */
+.neo-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1100;
+  background-color: var(--color-surface-card);
+  border: 2px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform var(--transition-bounce), opacity var(--transition-base);
+}
+
+.neo-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}

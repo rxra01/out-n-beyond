@@ -1,0 +1,105 @@
+/* ==========================================================================
+   OUT N BEYOND CAFE & BISTRO — DESIGN TOKENS
+   Theme: Warm Neo-Bistro Chic (Gen Z Tactile Warm Neo-Brutalism)
+   ========================================================================== */
+
+:root {
+  /* Surface & Background Colors */
+  --color-surface: #fff8f5;
+  --color-surface-dim: #e9d7ca;
+  --color-surface-bright: #fff8f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff1e8;
+  --color-surface-container: #feeadd;
+  --color-surface-container-high: #f8e5d8;
+  --color-surface-container-highest: #f2dfd2;
+  --color-surface-cream: #FAF5EE;
+  --color-surface-card: #FFFDF9;
+  --color-surface-parchment: #F3EBE0;
+  --color-background: #fff8f5;
+  
+  /* Brand Tones */
+  --color-primary: #592c00;
+  --color-primary-container: #7b3f00; /* Roasted Mocha */
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #ffaf70;
+  --color-primary-fixed: #ffdcc4;
+  --color-primary-fixed-dim: #ffb780;
+  --color-inverse-primary: #ffb780;
+
+  /* Secondary (Botanical Matcha) */
+  --color-secondary: #456649;
+  --color-secondary-container: #c4e9c5;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #496a4d;
+  --color-secondary-fixed: #c7ecc8;
+  --color-secondary-fixed-dim: #abd0ad;
+  --color-accent-matcha-light: #8BA888;
+  --color-accent-matcha-soft: #E3EDE2;
+
+  /* Tertiary & Accents (Kolkata Terracotta / Sunset) */
+  --color-tertiary: #6e1700;
+  --color-tertiary-container: #952503;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #ffac96;
+  --color-tertiary-fixed: #ffdbd1;
+  --color-tertiary-fixed-dim: #ffb4a1;
+  --color-accent-sunset: #FF8C42;
+  --color-accent-terracotta: #E05A36;
+  --color-accent-terracotta-soft: #F8DFD7;
+
+  /* Text & Structural Neutral */
+  --color-border-dark: #2B2119; /* Espresso Charcoal */
+  --color-on-surface: #231a12;
+  --color-on-surface-variant: #534439;
+  --color-outline: #867467;
+  --color-outline-variant: #d8c2b4;
+  --color-inverse-surface: #392e26;
+  --color-inverse-on-surface: #ffeee2;
+
+  /* Dietary & Semantic Status Colors */
+  --color-status-veg: #2E7D32;
+  --color-status-nonveg: #C62828;
+  --color-status-egg: #EF6C00;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+
+  /* Typography */
+  --font-display: 'Epilogue', system-ui, -apple-system, sans-serif;
+  --font-title: 'Space Grotesk', monospace, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Neo-Brutalist Shadows */
+  --shadow-xs: 1.5px 1.5px 0px var(--color-border-dark);
+  --shadow-sm: 2px 2px 0px var(--color-border-dark);
+  --shadow-md: 4px 4px 0px var(--color-border-dark);
+  --shadow-lg: 6px 6px 0px var(--color-border-dark);
+  --shadow-xl: 8px 8px 0px var(--color-border-dark);
+  --shadow-primary: 4px 4px 0px var(--color-primary-container);
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --container-max-width: 1200px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}

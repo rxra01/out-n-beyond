@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-container": "#ffaf70", "on-error-container": "#93000a", "border-dark": "#2B2119", "primary-fixed": "#ffdcc4", "on-surface-variant": "#534439", "surface-container": "#feeadd", "surface-container-lowest": "#ffffff", "status-nonveg": "#C62828", "surface-variant": "#f2dfd2", "error": "#ba1a1a", "accent-sunset": "#FF8C42", "primary-container": "#7b3f00", "secondary-fixed": "#c7ecc8", "tertiary-fixed": "#ffdbd1", "on-tertiary": "#ffffff", "on-background": "#231a12", "surface-bright": "#fff8f5", "status-egg": "#EF6C00", "secondary": "#456649", "accent-matcha-light": "#8BA888", "tertiary": "#6e1700", "on-primary-fixed-variant": "#6f3800", "accent-terracotta-soft": "#F8DFD7", "surface-parchment": "#F3EBE0", "surface-container-highest": "#f2dfd2", "tertiary-fixed-dim": "#ffb4a1", "on-tertiary-fixed": "#3c0800", "surface-container-low": "#fff1e8", "secondary-container": "#c4e9c5", "secondary-fixed-dim": "#abd0ad", "inverse-on-surface": "#ffeee2", "tertiary-container": "#952503", "accent-matcha-soft": "#E3EDE2", "on-tertiary-container": "#ffac96", "inverse-surface": "#392e26", "primary-fixed-dim": "#ffb780", "surface-container-high": "#f8e5d8", "primary": "#592c00", "on-primary": "#ffffff", "error-container": "#ffdad6", "outline": "#867467", "on-tertiary-fixed-variant": "#881f00", "on-secondary-fixed-variant": "#2e4e33", "surface-dim": "#e9d7ca", "status-veg": "#2E7D32", "on-primary-fixed": "#2f1400", "background": "#fff8f5", "surface-card": "#FFFDF9", "inverse-primary": "#ffb780", "surface-tint": "#8e4e11", "on-surface": "#231a12", "on-secondary-container": "#496a4d", "on-secondary-fixed": "#01210b", "on-secondary": "#ffffff", "on-error": "#ffffff", "surface-cream": "#FAF5EE", "outline-variant": "d8c2b4", "surface": "#fff8f5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "grid-gutter-desktop": "1.5rem", "container-max-width": "1200px", "space-lg": "1.5rem", "space-xxs": "0.25rem", "space-2xl": "3rem", "space-xl": "2rem", "space-sm": "0.75rem", "space-xs": "0.5rem", "grid-gutter-mobile": "1rem", "space-4xl": "6rem", "space-3xl": "4rem" }, "fontFamily": { "title-md": [ "Space Grotesk" ], "headline-lg-mobile": [ "Epilogue" ], "title-lg": [ "Space Grotesk" ], "label-btn": [ "Space Grotesk" ], "label-badge": [ "Space Grotesk" ], "body-lg": [ "Plus Jakarta Sans" ], "display-hero": [ "Epilogue" ], "body-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Epilogue" ], "headline-md": [ "Epilogue" ], "display-hero-mobile": [ "Epilogue" ], "headline-md-mobile": [ "Epilogue" ], "headline-lg": [ "Epilogue" ], "body-sm": [ "Plus Jakarta Sans" ] }, "fontSize": { "title-md": [ "16px", { "lineHeight": "22px", "fontWeight": "600" } ], "headline-lg-mobile": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "title-lg": [ "18px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "700" } ], "label-btn": [ "15px", { "lineHeight": "20px", "letterSpacing": "0.03em", "fontWeight": "700" } ], "label-badge": [ "12px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "display-hero": [ "64px", { "lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-sm": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "headline-md": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "display-hero-mobile": [ "38px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "headline-md-mobile": [ "24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-lg": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b-[2px] border-border-dark"><div class="h-20 max-w-[1200px] mx-auto px-space-md lg:px-space-lg flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-xs" data-path="home" href="#"><img alt="Out n Beyond Cafe Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X1PxskFOS3hGIdDsgllXG-TGvH2pBEIii70RyEmwwL76mNkO3v-GfM1A_tp0ZJC-mojjV7fK5ixliHjPfFLimdz0GRyBLHN4JkdpPuNPgCWwB2zgFTHB1K3iTS9mc5mGRAVMmTcYUouEfOV7__1Mus0hA-GsCNzrz3wFKM5lz5TrHbYTq5rMK_8L2WuUZQ0j20PyarECvR-fGhwuwK1HfVvb5yVbfziapuEZvRz39Y_1jJymemcMAlp60"/><div class="flex flex-col"><span class="font-title-lg text-title-lg tracking-tight text-primary leading-none">OUT N BEYOND</span><span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Cafe &amp; Bistro • Kolkata</span></div></a><div class="hidden xl:inline-flex items-center gap-space-xxs bg-accent-matcha-soft text-status-veg border-[1.5px] border-status-veg px-space-xs py-space-xxs rounded-full font-label-badge text-label-badge shadow-[2px_2px_0px_#2B2119]"><span class="w-2 h-2 rounded-full bg-status-veg animate-pulse"></span><span>Open today • Closes 11 PM</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="menu" href="#">Menu</a><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="story" href="#">Story</a><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="gallery-and-reels" href="#">Gallery &amp; Reels</a><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="reviews" href="#">Reviews</a><a class="px-space-xs py-space-xxs font-label-btn text-label-btn text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-xs sm:gap-space-sm"><a class="hidden sm:inline-flex items-center font-label-btn text-label-btn bg-surface-cream text-border-dark border-[2px] border-border-dark px-space-sm py-space-xs rounded-lg shadow-[2px_2px_0px_#2B2119] hover:bg-surface-container hover:text-on-surface active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all" data-path="reserve-table" href="#">Reserve Table</a><a class="inline-flex items-center font-label-btn text-label-btn bg-tertiary text-on-tertiary border-[2px] border-border-dark px-space-sm sm:px-space-md py-space-xs rounded-lg shadow-[4px_4px_0px_#2B2119] hover:bg-accent-sunset hover:text-on-surface active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#2B2119] transition-all" data-path="order-online" href="#">Order Online</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Top Visual Banner & Brand Hook -->
+<section class="w-full bg-surface-cream px-space-md lg:px-space-lg py-space-xl lg:py-space-2xl">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="space-y-space-sm max-w-2xl">
+<div class="inline-flex items-center gap-space-xs bg-surface-container px-space-sm py-space-xxs rounded-full shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-sunset animate-ping"></span>
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary">Live Kolkata Feed</span>
+<span class="text-on-surface-variant font-body-sm">• Hindustan Park, Gariahat</span>
+</div>
+<h1 class="font-display-hero text-headline-lg lg:text-display-hero text-primary tracking-tight leading-none">
+          The Photo &amp; Reels Dump <span class="inline-block transform hover:rotate-12 transition-transform">📸</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          All the mood, neon signage, cozy corners, and latte art. Tag <span class="font-bold text-tertiary">@outnbeyond.kolkata</span> to get featured on our cafe wall.
+        </p>
+</div>
+<!-- Instagram Follow CTA Pill & Real-time Metric -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-sm">
+<a class="group inline-flex items-center gap-space-xs bg-primary text-on-primary px-space-md py-space-sm rounded-full shadow-md hover:bg-accent-sunset hover:text-on-surface transition-all transform hover:-translate-y-0.5" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px] text-accent-sunset group-hover:text-on-surface transition-colors">camera_alt</span>
+<span class="font-label-btn text-label-btn">@outnbeyond.kolkata</span>
+<span class="bg-surface-container/20 px-2 py-0.5 rounded-full text-xs font-label-badge">24.5k Friends</span>
+</a>
+<div class="flex items-center gap-space-xs bg-surface-card px-space-sm py-space-xs rounded-xl shadow-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_awesome</span>
+<span class="font-body-sm text-body-sm"><span class="font-bold text-on-surface">300+</span> tagged this week</span>
+</div>
+</div>
+</div>
+</section>
+<!-- REELS & VIDEO STRIP SECTION (PRD 4.4 FR-13: 3 Short-form Video Assets) -->
+<section class="w-full bg-surface-bright py-space-2xl px-space-md lg:px-space-lg">
+<div class="max-w-[1200px] mx-auto space-y-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+<div>
+<span class="font-label-badge text-label-badge text-tertiary uppercase tracking-wider block">Short-Form Studio (FR-13)</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Viral Sips &amp; Bakes</h2>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-accent-sunset text-[18px]">graphic_eq</span>
+<span>Original cafe audio tracks available on Instagram</span>
+</div>
+</div>
+<!-- Reels 3-Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Reel 1: Pistachio Matcha Magic (0:38) -->
+<div class="relative group rounded-xl overflow-hidden bg-inverse-surface shadow-xl aspect-[9/16] flex flex-col justify-between p-space-md transition-all duration-300 hover:shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Vertical 9:16 aesthetic cafe video still of artisanal iced Pistachio Matcha latte being poured over clear crystal ice in a sunlit European-style Kolkata bistro, bright green and creamy pistachio froth, warm amber table surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXgM6N9l7u-gIydN3_PvUPzgzknvzehT9vK_fQ4vmi19MoVAH7GqP9ydj5Ihp4aheT5yCv4iTGYZzDdr7ZPInLzo2JtEsh0iXu8cCywF8grXE6gAmDBulwDBvGYy8UFiL2w0qjXoOSi41jOaZqlpBRUcwlFi0JfrMVnIurLPwaCeDk332Qhh3pXUU4s6-rpWva2iu0P-4hXcivQvxENhJ3aEa7lYqGquxZi6zgvFhWP3qmBPmyNsSv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/30 to-black/40"></div>
+<!-- Header overlay -->
+<div class="relative z-10 flex items-center justify-between">
+<span class="bg-surface-card/90 backdrop-blur-sm text-primary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span> 0:38
+            </span>
+<button aria-label="Mute toggle" class="w-8 h-8 rounded-full bg-surface-card/80 backdrop-blur-sm flex items-center justify-center text-border-dark hover:bg-surface-card transition-colors">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+</div>
+<!-- Centered Play Icon Overlay -->
+<div class="relative z-10 self-center">
+<button class="w-14 h-14 rounded-full bg-accent-sunset text-on-surface flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-[32px] translate-x-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Bottom Meta -->
+<div class="relative z-10 space-y-space-xs">
+<div class="flex items-center gap-space-xs text-secondary-fixed text-xs font-label-badge">
+<span class="material-symbols-outlined text-[14px]">local_cafe</span>
+<span>BEVERAGE CRAFT</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-white leading-snug drop-shadow-sm">
+              Morning Pour: Pistachio Matcha Magic 🍵
+            </h3>
+<div class="flex items-center justify-between pt-space-xs text-white/90 text-sm font-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-accent-sunset">visibility</span>
+<span class="font-title-md text-xs">48.2k</span>
+</div>
+<div class="flex items-center gap-space-sm text-xs font-title-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-status-nonveg" style="font-variation-settings: 'FILL' 1;">favorite</span> 3.4k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">share</span> 812</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reel 2: Baking our Viral Sourdough Brioche (0:19) -->
+<div class="relative group rounded-xl overflow-hidden bg-inverse-surface shadow-xl aspect-[9/16] flex flex-col justify-between p-space-md transition-all duration-300 hover:shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Vertical 9:16 short-form reel still of golden-brown sourdough brioche bread being sliced open with steam gently rising, bakery kitchen backdrop with flour dust and warm halogen lighting in cozy Kolkata cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnJXcVEklhZKDLxhRP1DTTqbDrXbkZsOnCXfzKQd9TAPFHbOBYfRYWxQ-H8t58mrapR8ITsNL3m9Qk4qW324-9xfOtD8oGY4tdNoSlnfyVY1qqLipInWlyGDzGLqXrrWH8q68Q3VE3IdnyV1OAIK9vkT-muZxY6thbN5xiWT5hpPcUtgoUw5SGT0iI0umX1vS1XufBi6zUuT6OythiHQ0bx736NtIXmRxJ-OPDmjrafKvlDoVZztNu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/30 to-black/40"></div>
+<!-- Header overlay -->
+<div class="relative z-10 flex items-center justify-between">
+<span class="bg-surface-card/90 backdrop-blur-sm text-primary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-status-egg">schedule</span> 0:19
+            </span>
+<button aria-label="Mute toggle" class="w-8 h-8 rounded-full bg-surface-card/80 backdrop-blur-sm flex items-center justify-center text-border-dark hover:bg-surface-card transition-colors">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+</div>
+<!-- Centered Play Icon Overlay -->
+<div class="relative z-10 self-center">
+<button class="w-14 h-14 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-[32px] translate-x-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Bottom Meta -->
+<div class="relative z-10 space-y-space-xs">
+<div class="flex items-center gap-space-xs text-on-primary-container text-xs font-label-badge">
+<span class="material-symbols-outlined text-[14px]">bakery_dining</span>
+<span>DAILY OVEN FRESH</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-white leading-snug drop-shadow-sm">
+              Baking our Viral Sourdough Brioche 🍞
+            </h3>
+<div class="flex items-center justify-between pt-space-xs text-white/90 text-sm font-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-accent-sunset">visibility</span>
+<span class="font-title-md text-xs">92.1k</span>
+</div>
+<div class="flex items-center gap-space-sm text-xs font-title-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-status-nonveg" style="font-variation-settings: 'FILL' 1;">favorite</span> 8.9k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">share</span> 2.4k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reel 3: Night Vibes & Lofi Jams under fairy lights (0:56) -->
+<div class="relative group rounded-xl overflow-hidden bg-inverse-surface shadow-xl aspect-[9/16] flex flex-col justify-between p-space-md transition-all duration-300 hover:shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Vertical 9:16 reel screenshot showing cozy evening bistro outdoor terrace in Hindustan Park Kolkata, illuminated with amber fairy lights, warm wooden tables, young creatives chatting with coffee cups and wine glasses, lofi cafe ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByj9MHIpm6Lt_LfQqRshBXqBnmqmnXvl2iAgV0dnBv7PJa6RoNVId_Rl39Wzd5b_0WrNzLQo2DaB878Fel5AbbPbMHF1u3zaPq8iKJUn-ky17V3OkKBwQclkYgcaXfpegZYXmq738Oz8PqQIEmPWmqA1gMmUyqdci8tcCvml5bzKVvZEbrCvrAP3_weQXX4geY07Hhnqd_P2fhtwB2tE4cWVHqu8hd_CtQMxiZJEVhls6O6i-zkQr6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/30 to-black/40"></div>
+<!-- Header overlay -->
+<div class="relative z-10 flex items-center justify-between">
+<span class="bg-surface-card/90 backdrop-blur-sm text-primary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-accent-sunset">schedule</span> 0:56
+            </span>
+<button aria-label="Mute toggle" class="w-8 h-8 rounded-full bg-surface-card/80 backdrop-blur-sm flex items-center justify-center text-border-dark hover:bg-surface-card transition-colors">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+</div>
+<!-- Centered Play Icon Overlay -->
+<div class="relative z-10 self-center">
+<button class="w-14 h-14 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-[32px] translate-x-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Bottom Meta -->
+<div class="relative z-10 space-y-space-xs">
+<div class="flex items-center gap-space-xs text-secondary-fixed text-xs font-label-badge">
+<span class="material-symbols-outlined text-[14px]">nightlife</span>
+<span>EVENING SESSIONS</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-white leading-snug drop-shadow-sm">
+              Night Vibes &amp; Lofi Jams under fairy lights ✨
+            </h3>
+<div class="flex items-center justify-between pt-space-xs text-white/90 text-sm font-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-accent-sunset">visibility</span>
+<span class="font-title-md text-xs">61.4k</span>
+</div>
+<div class="flex items-center gap-space-sm text-xs font-title-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-status-nonveg" style="font-variation-settings: 'FILL' 1;">favorite</span> 5.1k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">share</span> 1.1k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AESTHETIC PHOTO MASONRY & LIGHTBOX INTERACTION (PRD 4.4 FR-12) -->
+<section class="w-full bg-surface-parchment py-space-3xl px-space-md lg:px-space-lg">
+<div class="max-w-[1200px] mx-auto space-y-space-xl">
+<!-- Section Header + Filter Pills -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xxs">
+<div class="inline-flex items-center gap-space-xxs bg-accent-terracotta-soft text-tertiary px-space-xs py-space-xxs rounded-md font-label-badge text-label-badge">
+<span class="material-symbols-outlined text-[14px]">grid_view</span> Community Aesthetic
+          </div>
+<h2 class="font-headline-lg text-headline-md lg:text-headline-lg text-primary tracking-tight">Curated Snap Grid</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Tap any snapshot to read what diners felt about this moment.</p>
+</div>
+<!-- Filter Tags -->
+<div class="flex flex-wrap items-center gap-space-xs" id="gallery-filters">
+<button class="gallery-tab active-filter px-space-sm py-space-xs rounded-full font-label-btn text-label-btn bg-primary text-on-primary shadow-sm transition-all" data-filter="all">All</button>
+<button class="gallery-tab px-space-sm py-space-xs rounded-full font-label-btn text-label-btn bg-surface-card text-on-surface-variant hover:bg-surface-container shadow-sm transition-all" data-filter="food">Food Porn 🥞</button>
+<button class="gallery-tab px-space-sm py-space-xs rounded-full font-label-btn text-label-btn bg-surface-card text-on-surface-variant hover:bg-surface-container shadow-sm transition-all" data-filter="interior">Cafe Interiors 🪴</button>
+<button class="gallery-tab px-space-sm py-space-xs rounded-full font-label-btn text-label-btn bg-surface-card text-on-surface-variant hover:bg-surface-container shadow-sm transition-all" data-filter="golden">Golden Hour ✨</button>
+<button class="gallery-tab px-space-sm py-space-xs rounded-full font-label-btn text-label-btn bg-surface-card text-on-surface-variant hover:bg-surface-container shadow-sm transition-all" data-filter="pets">Pups of Out n Beyond 🐶</button>
+</div>
+</div>
+<!-- Bento-style Masonry Collage Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md" id="masonry-items">
+<!-- Item 1: Neon Quote Wall (Large 8-col hero card) -->
+<div class="gallery-item md:col-span-8 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="interior golden">
+<div class="relative overflow-hidden rounded-lg aspect-[16/9]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Aesthetic interior wall of Out n Beyond Cafe Kolkata with glowing warm-yellow neon cursive sign reading 'Stay Beyond The Ordinary', set against exposed brickwork, potted fiddle leaf figs, and cozy mid-century armchair seating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9_NXdXw3_bCR6LBVoBY_2Whn-f5oCmHDClBsoc1T6yIswA6GFmSTywdj_2SlABg4l2l72RP7_-pCO9zkhM_0xIsVbmnkFAfU6t8LyP8pwz0-qj21L3hRL7NpidBNfw3Eu8qw9G_9FpnFGeidSIigF7O8wuxpu3FgHiKfxSzXmj-SUFCG_WvFFh6K2JYQxiwmxqmTPj71oO0uqZf14q5VdxXZbpW0xPmQb_z8OG56BIElRecIR9X3R"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-primary/90 backdrop-blur-md text-on-primary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full">INTERIORS • NEON WALL</span>
+</div>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-space-lg text-center">
+<span class="bg-surface-card text-primary font-label-btn text-label-btn px-space-md py-space-xs rounded-full shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span> View Reviewer Story
+              </span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">"Stay Beyond The Ordinary" Neon Corner</span>
+<span class="font-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-accent-sunset">favorite</span> 1.4k saves</span>
+</div>
+</div>
+<!-- Item 2: Fluffy Ricotta Pancakes with berries (4-col) -->
+<div class="gallery-item md:col-span-4 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="food">
+<div class="relative overflow-hidden rounded-lg aspect-square">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Artisanal stack of fluffy Japanese-style soufflé pancakes drizzled with warm amber maple syrup and dusted with powdered sugar, fresh strawberries, on a handcrafted ceramic plate at Out n Beyond Cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmhJkwLcRcjcwCjx3dY0FgzCZrSjQAUvE5eeCOlkPEi4g5YbJMZ2ATnmwG-6MASCHwR36H74irCiWCgq0KnAVPouhKC0crzv-YE3aZW3QcklSJG-y5-KFEdohIOZz5TaHA0QNtSNNCulB1Xu8VDrXGtMzJaw88FUIuEhhXjTd2C6IHL_evlHdMKqk-umeawKoW4-pAWgsJV1F1ZQvpccsfFPcXjHbLn8Ir8738xjoAh4tLIULVWpTi"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-tertiary-container text-on-tertiary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full">SWEET CRUSH</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<span class="font-title-md text-title-md text-primary block truncate">Fluffy Soufflé Berry Stack</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sunday Brunch highlight</span>
+</div>
+</div>
+<!-- Item 3: Coffee Barista Pour-over (4-col) -->
+<div class="gallery-item md:col-span-4 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="food interior">
+<div class="relative overflow-hidden rounded-lg aspect-square">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Tattooed specialty barista performing a precision V60 pour-over coffee extraction with an amber gooseneck kettle, steam rising, inside Out n Beyond Cafe roastery Kolkata." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBumKebcR1ga9XjlEmHJ3Egcx85tB-ICQ7kYKoUIC0PzAmx4771-vnOVqTYGb6AHiDFDAJegRUl1BjBJwb0aNuA6uFa3he-w8j0AXsEoZ8LjbZO3hnRgVs-4hctzqBTN6R0KgEoXjtKD4SBAGNcP75XKJ4Y3uIpQaY5_IUXtl2WPJIIJC9I8043id1C26C8xthQ1MruLCOww_5dhTqnRQ5DcNwtg4CQJm6a14zI5HkjaSC6AbcJPEuP"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-secondary text-on-secondary font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full">ROASTERY LAB</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<span class="font-title-md text-title-md text-primary block truncate">Single-Origin V60 Bar</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Chikmagalur Medium Roast</span>
+</div>
+</div>
+<!-- Item 4: Pet Visitor Golden Retriever on Terrace (4-col) -->
+<div class="gallery-item md:col-span-4 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="pets golden">
+<div class="relative overflow-hidden rounded-lg aspect-square">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Adorable smiling golden retriever sitting under an outdoor cafe parasol with a water bowl and dog biscuit on a terracotta tiled bistro floor in Hindustan Park, sunny Kolkata afternoon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnXHwEcZcxXDmd5Q0BX0kyJ7yiAYU12LBLwi4fTWKHP4VsNGqucaC6TTobjs8aVPf-ai_fjmug6x9D9VLqv49FC_SkAyjVQMLpJOQIPJykRIO2apzKlyADZsYpbpYOS9nM3a1DNkJSAKmhhp7H7t8xNOAcKk7tK1Fr11ISZmTcrZfXfy0jaEwZ1jamv8k9gVnzcVmxkVlNU4U5Z3mfzUC4ha_NtkPB1YUWJ5kMRE14Ms8h9DJ718NI"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-accent-matcha-soft text-status-veg font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pets</span> PET FRIENDLY
+              </span>
+</div>
+</div>
+<div class="pt-space-sm">
+<span class="font-title-md text-title-md text-primary block truncate">Meet Bruno @ the Patio</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Complimentary puppuccinos daily</span>
+</div>
+</div>
+<!-- Item 5: Golden Hour Window Nook (4-col) -->
+<div class="gallery-item md:col-span-4 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="interior golden">
+<div class="relative overflow-hidden rounded-lg aspect-square">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm golden hour sunlight streaming through large glass arched windows into a cozy Kolkata cafe corner with vintage books, checkered pillows, and a notebook with an iced Spanish latte." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT76wU369EnaGXNFPcuezyPqzJt0D_QqG8iFM425oq2IrR9iB_I1-4m_EDobSj-Cs5RBxFMPRfRswUn4imdFKAVlxF2ljH1nXhrlBonF8kBQpOxPdfpVlcsWkFUf37gUQrZSSuWrADeYF8kcyA3VEFmRDFJlQGuizwikPi6jyKeluZCm-imCf7WvpMf-gj9h3exn4C4j4rtl3iNUBXUBUXLbVArSm-wMQ8rGaOkiV5oR48nZPLK8GY"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-surface-container text-on-surface font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full">4:30 PM SUNLIGHT</span>
+</div>
+</div>
+<div class="pt-space-sm">
+<span class="font-title-md text-title-md text-primary block truncate">Arched Window Reading Seat</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Best remote work workstation</span>
+</div>
+</div>
+<!-- Item 6: Crispy Truffle Parmesan Fries Platter (6-col) -->
+<div class="gallery-item md:col-span-6 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="food">
+<div class="relative overflow-hidden rounded-lg aspect-[16/10]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Platter of golden hand-cut truffle parmesan French fries topped with freshly shaved pecorino and herbs, served with smoked paprika dip at bistro dining table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACJmpjZO1J0U0kBctrkVNF7SMC-dBr8YJ8WMySbgF-jxJ6sHteMVjA2S2dh3hl5UC2A6l4P5Wr1stNNc7yRUQUJVqbl3QpIQXJjG_Pr9e9-ZFqdTTwk3H8k2AtZWXDH1PwBh3SkwWv04cNTbKcEDE9PQXwOLGyORLpLcD5sQBp-xaiitBJ66R1jUvHWVHvrnJbCb5aJ6N7Y6rMvMbSe3vweXKhcu9W4qiEq6mbK-S07Iqm-s80jvYw"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-primary-container text-on-primary-container font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full">SAVORY OBSESSION</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Hand-Cut Truffle &amp; Herb Fries</span>
+<span class="font-body-sm text-tertiary font-bold">₹345</span>
+</div>
+</div>
+<!-- Item 7: Corgi & French Bulldog Meetup (6-col) -->
+<div class="gallery-item md:col-span-6 bg-surface-card rounded-xl p-space-sm shadow-md group cursor-pointer hover:shadow-xl transition-all" data-category="pets interior">
+<div class="relative overflow-hidden rounded-lg aspect-[16/10]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Two happy dogs, a Welsh corgi and a French bulldog, wearing cute bandanas, socializing on the sun-drenched cafe verandah at Out n Beyond Cafe in South Kolkata." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8g7VyoRNjBLaQdpmfUtc-yz96smc5roVCMhoiHQ9xQw6UEpK6qINuFqz_tyQnQEbmaz2w7xutbi5_37Q1TV16Qt4_xRCZE_6-pIufeYjLKuuohofXosJIvAknn0RkkXLOxewtQVdneJfGNapgysI3hyVMaLDBzrcBqtVU2-K1zy85_PX1wGiqXT5uiOpsFE5fXuNpQOQlIhoIeRT2r0LSjedHS3Bcs-e6LWdLQoCertm_fpCf-L1F"/>
+<div class="absolute top-space-sm left-space-sm">
+<span class="bg-accent-matcha-soft text-status-veg font-label-badge text-label-badge px-space-xs py-space-xxs rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pets</span> WEEKEND PET SOCIAL
+              </span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary">Sunday Paws Club: Leo &amp; Mochi</span>
+<span class="font-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-status-nonveg">favorite</span> 2.1k likes</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- USER-GENERATED CONTENT (UGC) INVITE BANNER -->
+<section class="w-full bg-surface-card px-space-md lg:px-space-lg py-space-2xl">
+<div class="max-w-[1200px] mx-auto bg-gradient-to-br from-surface-container via-surface-cream to-surface-container-high rounded-xl p-space-xl lg:p-space-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-xl">
+<div class="space-y-space-sm max-w-xl">
+<div class="inline-flex items-center gap-space-xxs bg-surface-card px-space-sm py-space-xxs rounded-full shadow-sm text-status-nonveg font-label-badge text-label-badge">
+<span class="material-symbols-outlined text-[16px]">celebration</span> FREE PERK ALERT
+        </div>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">
+          Snap a pic with your cup &amp; get 10% off!
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Snap a photo with your coffee, pastry, or doggo, tag <strong class="text-tertiary font-bold">@outnbeyond.kolkata</strong> on your Instagram Story or TikTok, and show your server to claim <strong class="text-on-surface font-semibold">10% off your next cold brew or dessert!</strong>
+</p>
+<div class="flex flex-wrap gap-space-sm pt-space-xs">
+<span class="inline-flex items-center gap-1 text-xs font-title-md text-secondary">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Instant server redemption
+          </span>
+<span class="inline-flex items-center gap-1 text-xs font-title-md text-secondary">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Valid Mon to Sun
+          </span>
+</div>
+</div>
+<!-- Action Card / Hashtag Badge -->
+<div class="flex flex-col items-center bg-surface-card p-space-lg rounded-xl shadow-md w-full md:w-auto min-w-[280px] text-center space-y-space-sm">
+<div class="w-16 h-16 rounded-full bg-accent-sunset/20 flex items-center justify-center text-accent-sunset">
+<span class="material-symbols-outlined text-[36px]">loyalty</span>
+</div>
+<div>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-widest block">Official Hashtags</span>
+<span class="font-headline-sm text-headline-sm text-primary">#OutnBeyondCafe</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">#KolkataCafeHopping</span>
+</div>
+<a class="w-full inline-flex items-center justify-center gap-space-xs bg-tertiary text-on-tertiary px-space-md py-space-sm rounded-lg font-label-btn text-label-btn shadow-md hover:bg-primary transition-all" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span> Tag Us on Instagram
+        </a>
+</div>
+</div>
+</section>
+<!-- LIGHTBOX MODAL (Simulated with reviewer quotes) -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-space-md" id="lightbox-modal">
+<div class="relative bg-surface-card max-w-3xl w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+<!-- Close Button -->
+<button class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-surface-card/90 text-primary flex items-center justify-center shadow-lg hover:bg-surface-cream transition-colors" id="close-lightbox">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<!-- Lightbox Media Area -->
+<div class="md:w-3/5 bg-inverse-surface flex items-center justify-center min-h-[300px]">
+<img class="w-full h-full object-cover" data-alt="Selected aesthetic cafe photo showing cozy ambiance and delicious artisanal food in Out n Beyond Cafe Kolkata." id="lightbox-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoAVql0RxnqK92FiYYhi_e_uvGOuACRspLdHUwRoE0N2vSE05EhzmpF_XH5EnKF4SggqnLc9BnA6P7MOE2wTVWhyDYssBFjp9wgBt6NVlN4MumnPEc3-n4gGqH_zUgns_4dulOiqwb614t5Xym8SNc5funV5vwB4LN8QEWkwTITmeXbMv80Me-cdSKt8WGv07k2XgFVDIBu9ZIYOZtyPu8xz9g75k40Az7h3swyHB0n6DvSgcNaKL"/>
+</div>
+<!-- Lightbox Content & Quote Pane -->
+<div class="md:w-2/5 p-space-lg flex flex-col justify-between space-y-space-md overflow-y-auto">
+<div class="space-y-space-sm">
+<div class="flex items-center gap-space-xs text-status-nonveg">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary" id="lightbox-title">"The aesthetic here is unmatched."</h4>
+<p class="font-body-md text-body-md text-on-surface-variant italic" id="lightbox-quote">
+            "We spent 3 hours reading by the window corner. The pistachio matcha is totally worth the hype and they treated our pup with so much love!"
+          </p>
+</div>
+<div class="pt-space-md bg-surface-cream p-space-sm rounded-xl space-y-space-xxs">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-primary" id="lightbox-author">Rhea Sen • Kolkata</span>
+<span class="text-xs font-label-badge bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded">Verified Dine-in</span>
+</div>
+<p class="text-xs font-body-sm text-on-surface-variant">Shared via Instagram Story tag</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript for Filter and Lightbox Simulation -->
+<script>
+    (function() {
+      // Filter functionality
+      const filterTabs = document.querySelectorAll('.gallery-tab');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          filterTabs.forEach(t => {
+            t.classList.remove('bg-primary', 'text-on-primary');
+            t.classList.add('bg-surface-card', 'text-on-surface-variant');
+          });
+          this.classList.remove('bg-surface-card', 'text-on-surface-variant');
+          this.classList.add('bg-primary', 'text-on-primary');
+
+          const category = this.getAttribute('data-filter');
+          galleryItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category').includes(category)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Lightbox Simulation
+      const modal = document.getElementById('lightbox-modal');
+      const closeBtn = document.getElementById('close-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxQuote = document.getElementById('lightbox-quote');
+      const lightboxAuthor = document.getElementById('lightbox-author');
+
+      const reviewsList = [
+        {
+          title: "Vibe check passed 10/10!",
+          quote: "The neon sign corner is iconic. Ordered the avocado brioche and iced latte, stayed till sunset listening to their vinyl playlist.",
+          author: "Ananya M. • South Kolkata"
+        },
+        {
+          title: "Dog friendly heaven!",
+          quote: "Bruno had the best Sunday here. The outdoor patio has shade, bowls, and friendly staff who love pets. Will visit weekly!",
+          author: "Sourav G. • Gariahat"
+        },
+        {
+          title: "Best Matcha in Bengal",
+          quote: "Finally a cafe in Kolkata that doesn't over-sweeten matcha. Earthy, velvety, and served in beautiful ceramic cups.",
+          author: "Titas C. • Salt Lake"
+        }
+      ];
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          const title = item.querySelector('.font-title-md');
+          if (img) lightboxImg.src = img.src;
+          const review = reviewsList[index % reviewsList.length];
+          lightboxTitle.innerText = review.title;
+          lightboxQuote.innerText = `"${review.quote}"`;
+          lightboxAuthor.innerText = review.author;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-parchment border-t-[2px] border-border-dark mt-space-3xl"><div class="max-w-[1200px] mx-auto px-space-md lg:px-space-lg py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="Out n Beyond Cafe Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X1PxskFOS3hGIdDsgllXG-TGvH2pBEIii70RyEmwwL76mNkO3v-GfM1A_tp0ZJC-mojjV7fK5ixliHjPfFLimdz0GRyBLHN4JkdpPuNPgCWwB2zgFTHB1K3iTS9mc5mGRAVMmTcYUouEfOV7__1Mus0hA-GsCNzrz3wFKM5lz5TrHbYTq5rMK_8L2WuUZQ0j20PyarECvR-fGhwuwK1HfVvb5yVbfziapuEZvRz39Y_1jJymemcMAlp60"/><span class="font-headline-sm text-headline-sm text-primary">OUT N BEYOND</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Artisanal roastery, comforting European plates &amp; Kolkata's favorite creative hangout corner. Unapologetic flavor, vibrant conversations, and good vibes daily.</p><div class="inline-flex items-center gap-space-xxs bg-surface-card border-[1.5px] border-border-dark px-space-sm py-space-xxs rounded-xl shadow-[2px_2px_0px_#2B2119]"><span class="material-symbols-outlined text-accent-sunset text-[18px]">star</span><span class="font-title-md text-title-md text-border-dark">4.5</span><span class="font-body-sm text-body-sm text-on-surface-variant">(9,480+ Google Reviews)</span></div></div><div class="space-y-space-sm"><span class="font-title-lg text-title-lg text-border-dark block uppercase tracking-wider">Bistro Location</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed flex items-start gap-space-xxs"><span class="material-symbols-outlined text-tertiary text-[20px] shrink-0">location_on</span><span>14/2B Hindustan Park, Gariahat, Kolkata, West Bengal 700029 (Near Triangular Park)</span></p><div class="pt-space-xxs font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xxs"><span class="material-symbols-outlined text-secondary text-[18px]">call</span><span>+91 98300 12345 / 033 2465 8900</span></div><div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xxs"><span class="material-symbols-outlined text-secondary text-[18px]">mail</span><span>hello@outnbeyondcafe.in</span></div></div><div class="space-y-space-sm"><span class="font-title-lg text-title-lg text-border-dark block uppercase tracking-wider">Hours &amp; Vibe</span><div class="space-y-space-xxs font-body-sm text-body-sm text-on-surface-variant"><div class="flex justify-between border-b border-outline-variant pb-space-xxs"><span>Monday – Friday</span><span class="font-medium text-on-surface">11:00 AM – 11:00 PM</span></div><div class="flex justify-between border-b border-outline-variant pb-space-xxs"><span>Saturday – Sunday</span><span class="font-medium text-on-surface">9:30 AM – 11:30 PM</span></div><div class="flex justify-between"><span>Kitchen Last Call</span><span class="font-medium text-tertiary">10:30 PM</span></div></div><div class="pt-space-xs"><span class="inline-block bg-accent-terracotta-soft text-tertiary border-[1px] border-border-dark px-space-xs py-space-xxs rounded-md font-label-badge text-label-badge">Pet Friendly • Free High-Speed WiFi</span></div></div><div class="space-y-space-sm"><span class="font-title-lg text-title-lg text-border-dark block uppercase tracking-wider">Community &amp; Reels</span><p class="font-body-sm text-body-sm text-on-surface-variant">Tag @outnbeyond.kolkata in your food snaps and reels to get featured on our cafe wall!</p><div class="flex flex-wrap gap-space-xs pt-space-xxs"><a class="inline-flex items-center gap-space-xxs bg-surface-card border-[1.5px] border-border-dark px-space-sm py-space-xxs rounded-lg font-label-btn text-label-btn text-on-surface shadow-[2px_2px_0px_#2B2119] hover:bg-secondary-container hover:text-on-secondary-container active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all" data-path="gallery-and-reels" href="#"><span class="material-symbols-outlined text-[18px]">play_circle</span>Watch Reels</a><a class="inline-flex items-center gap-space-xxs bg-surface-card border-[1.5px] border-border-dark px-space-sm py-space-xxs rounded-lg font-label-btn text-label-btn text-on-surface shadow-[2px_2px_0px_#2B2119] hover:bg-primary-container hover:text-on-primary-container active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all" data-path="reviews" href="#"><span class="material-symbols-outlined text-[18px]">rate_review</span>Write a Review</a></div></div></div><div class="border-t-[1.5px] border-border-dark mt-space-xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><p>© 2025 Out n Beyond Cafe &amp; Bistro LLP. Crafted with warmth in Kolkata.</p><div class="flex items-center gap-space-md"><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">FSSAI License</a><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></div></div></div></footer></body></html>
