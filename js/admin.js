@@ -6,22 +6,110 @@ const AdminController = {
   isAuthenticated: false,
   activeTab: 'overview',
   enteredPin: '',
+  currentUser: null,
+  authMethod: null, // 'firebase' | 'pin'
 
   init() {
-    this.checkSessionAuth();
     this.bindEvents();
+    this.initFirebaseAuthListener();
+    this.checkSessionAuth();
+    this.updateFirebaseBadge();
     if (this.isAuthenticated) {
       this.renderDashboard();
     }
   },
 
+  initFirebaseAuthListener() {
+    const setupListener = () => {
+      if (window.FirebaseAuthService) {
+        window.FirebaseAuthService.onAuthStateChange((user) => {
+          this.handleAuthStateChanged(user);
+        });
+      } else {
+        setTimeout(setupListener, 100);
+      }
+    };
+    setupListener();
+  },
+
+  handleAuthStateChanged(user) {
+    if (user) {
+      this.isAuthenticated = true;
+      this.currentUser = user;
+      this.authMethod = 'firebase';
+      this.updateStaffHeaderProfile(user);
+      this.showDashboardUI();
+      if (window.CafeDB) {
+        window.CafeDB.logActivity(`Staff member "${user.email}" authenticated via Firebase`);
+      }
+    } else {
+      // If Firebase user logged out, check if session PIN was active
+      if (sessionStorage.getItem('outnbeyond_admin_auth') === 'true' && this.authMethod === 'pin') {
+        this.isAuthenticated = true;
+        this.showDashboardUI();
+      } else {
+        this.isAuthenticated = false;
+        this.currentUser = null;
+        this.authMethod = null;
+        this.showLockScreenUI();
+      }
+    }
+  },
+
   checkSessionAuth() {
+    if (window.FirebaseAuthService && window.FirebaseAuthService.getCurrentUser()) {
+      this.handleAuthStateChanged(window.FirebaseAuthService.getCurrentUser());
+      return;
+    }
     if (sessionStorage.getItem('outnbeyond_admin_auth') === 'true') {
       this.isAuthenticated = true;
+      this.authMethod = 'pin';
+      this.updateStaffHeaderProfile({
+        email: 'station-terminal@outnbeyond.cafe',
+        displayName: 'Station Counter',
+        isPin: true
+      });
       this.showDashboardUI();
     } else {
       this.isAuthenticated = false;
       this.showLockScreenUI();
+    }
+  },
+
+  updateStaffHeaderProfile(user) {
+    const chip = document.getElementById('adminStaffProfileChip');
+    const avatar = document.getElementById('adminStaffAvatar');
+    const email = document.getElementById('adminStaffEmail');
+    const role = document.getElementById('adminStaffRole');
+
+    if (!chip || !avatar || !email || !role) return;
+
+    chip.style.display = 'inline-flex';
+
+    if (user.photoURL) {
+      avatar.innerHTML = `<img src="${user.photoURL}" alt="${user.displayName || 'Staff'}" style="width: 100%; height: 100%; border-radius: 9999px; object-fit: cover;" />`;
+    } else {
+      const initial = (user.displayName || user.email || 'S').charAt(0).toUpperCase();
+      avatar.textContent = initial;
+    }
+
+    email.textContent = user.displayName || user.email || 'Staff Member';
+    email.title = user.email || '';
+
+    if (user.isPin) {
+      role.textContent = 'Station Terminal';
+      role.className = 'auth-status-badge badge-sunset';
+    } else {
+      role.textContent = 'Verified Staff';
+      role.className = 'auth-status-badge badge-veg';
+    }
+  },
+
+  updateFirebaseBadge() {
+    const badge = document.getElementById('adminFirebaseStatusBadge');
+    if (badge) {
+      badge.textContent = 'outnbeyond-56a2f (Live)';
+      badge.className = 'badge badge-veg';
     }
   },
 
@@ -77,31 +165,277 @@ const AdminController = {
     const correctPin = window.CafeDB ? window.CafeDB.getPin() : '1234';
     if (this.enteredPin === correctPin) {
       this.isAuthenticated = true;
+      this.authMethod = 'pin';
       sessionStorage.setItem('outnbeyond_admin_auth', 'true');
       this.enteredPin = '';
       this.updatePinDots();
+      this.updateStaffHeaderProfile({
+        email: 'station-terminal@outnbeyond.cafe',
+        displayName: 'Station Counter',
+        isPin: true
+      });
       this.showDashboardUI();
-      if (window.showToast) window.showToast('🔓 Admin Portal Access Granted');
+      if (window.CafeDB) window.CafeDB.logActivity('Staff unlocked station portal via 4-digit PIN');
+      if (window.showToast) window.showToast('🔓 Station Counter Access Granted');
     } else {
       const pinContainer = document.getElementById('pinInputBox');
       if (pinContainer) {
         pinContainer.classList.add('shake');
         setTimeout(() => pinContainer.classList.remove('shake'), 500);
       }
-      if (window.showToast) window.showToast('❌ Incorrect PIN. (Default is 1234)');
+      if (window.showToast) window.showToast('❌ Incorrect Station PIN. (Default is 1234)');
       this.enteredPin = '';
       this.updatePinDots();
     }
   },
 
-  logout() {
+  async logout() {
+    if (window.FirebaseAuthService) {
+      try {
+        await window.FirebaseAuthService.signOutUser();
+      } catch (err) {
+        console.warn('Firebase signout error:', err);
+      }
+    }
     this.isAuthenticated = false;
+    this.currentUser = null;
+    this.authMethod = null;
     sessionStorage.removeItem('outnbeyond_admin_auth');
     this.showLockScreenUI();
-    if (window.showToast) window.showToast('🔒 Admin Session Locked');
+    if (window.showToast) window.showToast('🔒 Staff Session Locked');
   },
 
   bindEvents() {
+    // Mode switcher tabs (Sign In vs Register vs PIN)
+    const authTabs = document.querySelectorAll('.auth-mode-btn');
+    authTabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        authTabs.forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+
+        const targetId = btn.getAttribute('data-target');
+        document.querySelectorAll('.auth-panel').forEach(p => p.style.display = 'none');
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.style.display = 'flex';
+        }
+      });
+    });
+
+    // Password visibility toggle buttons
+    document.querySelectorAll('.auth-toggle-pwd').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (input) {
+          if (input.type === 'password') {
+            input.type = 'text';
+            if (icon) icon.textContent = 'visibility_off';
+          } else {
+            input.type = 'password';
+            if (icon) icon.textContent = 'visibility';
+          }
+        }
+      });
+    });
+
+    // Email/Password Login Form
+    const emailLoginForm = document.getElementById('adminEmailLoginForm');
+    if (emailLoginForm) {
+      emailLoginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('adminStaffEmailInput')?.value?.trim();
+        const password = document.getElementById('adminStaffPasswordInput')?.value;
+        const submitBtn = document.getElementById('adminEmailSignInBtn');
+
+        if (!email || !password) {
+          if (window.showToast) window.showToast('Please enter both staff email and password.');
+          return;
+        }
+
+        const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">progress_activity</span> <span>Verifying...</span>';
+        }
+
+        try {
+          if (!window.FirebaseAuthService) {
+            throw new Error('Firebase Authentication service is loading. Please try again.');
+          }
+          await window.FirebaseAuthService.signInWithEmail(email, password);
+          if (window.showToast) window.showToast(`✅ Welcome, ${email}`);
+        } catch (err) {
+          if (window.showToast) window.showToast(`❌ ${err.message}`);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHtml;
+          }
+        }
+      });
+    }
+
+    // Email/Password Registration Form
+    const emailRegForm = document.getElementById('adminEmailRegisterForm');
+    if (emailRegForm) {
+      emailRegForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('adminRegNameInput')?.value?.trim();
+        const email = document.getElementById('adminRegEmailInput')?.value?.trim();
+        const password = document.getElementById('adminRegPasswordInput')?.value;
+        const submitBtn = document.getElementById('adminRegisterSubmitBtn');
+
+        if (!email || !password) {
+          if (window.showToast) window.showToast('Please enter name, email and password.');
+          return;
+        }
+
+        const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">progress_activity</span> <span>Creating...</span>';
+        }
+
+        try {
+          if (!window.FirebaseAuthService) {
+            throw new Error('Firebase Authentication service is loading. Please try again.');
+          }
+          await window.FirebaseAuthService.registerWithEmail(email, password, name);
+          if (window.showToast) window.showToast(`🎉 Staff Account created for ${name || email}!`);
+          emailRegForm.reset();
+        } catch (err) {
+          if (window.showToast) window.showToast(`❌ ${err.message}`);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHtml;
+          }
+        }
+      });
+    }
+
+    // Google Sign-In Button
+    const googleBtn = document.getElementById('adminGoogleSignInBtn');
+    if (googleBtn) {
+      googleBtn.addEventListener('click', async () => {
+        try {
+          if (!window.FirebaseAuthService) {
+            throw new Error('Firebase Authentication service is loading. Please try again.');
+          }
+          await window.FirebaseAuthService.signInWithGoogle();
+          if (window.showToast) window.showToast('✨ Google Staff Authentication Successful');
+        } catch (err) {
+          if (window.showToast) window.showToast(`❌ ${err.message}`);
+        }
+      });
+    }
+
+    // Forgot Password Button
+    const forgotPwdBtn = document.getElementById('adminForgotPasswordBtn');
+    if (forgotPwdBtn) {
+      forgotPwdBtn.addEventListener('click', async () => {
+        let email = document.getElementById('adminStaffEmailInput')?.value?.trim();
+        if (!email) {
+          email = prompt('Enter your registered staff email address for password reset:');
+        }
+        if (!email) return;
+
+        try {
+          if (!window.FirebaseAuthService) {
+            throw new Error('Firebase Authentication service is loading. Please try again.');
+          }
+          const res = await window.FirebaseAuthService.sendPasswordReset(email);
+          if (window.showToast) window.showToast(`📧 ${res.message || 'Password reset link sent!'}`);
+        } catch (err) {
+          if (window.showToast) window.showToast(`❌ ${err.message}`);
+        }
+      });
+    }
+
+    // Firebase Settings Modal openers & closers
+    const openConfigBtn = document.getElementById('openFirebaseConfigBtn');
+    const openSettingsConfigBtn = document.getElementById('btnOpenFirebaseSettingsModal');
+    const configModal = document.getElementById('firebaseConfigModal');
+    const closeConfigBtn = document.getElementById('closeFirebaseConfigBtn');
+
+    const openModal = () => {
+      if (!configModal) return;
+      configModal.style.display = 'flex';
+      // Preload current config
+      if (window.FirebaseAuthService) {
+        const cfg = window.FirebaseAuthService.getConfig();
+        const setVal = (id, val) => {
+          const el = document.getElementById(id);
+          if (el) el.value = val || '';
+        };
+        setVal('cfgApiKey', cfg.apiKey);
+        setVal('cfgProjectId', cfg.projectId);
+        setVal('cfgAuthDomain', cfg.authDomain);
+        setVal('cfgStorageBucket', cfg.storageBucket);
+        setVal('cfgAppId', cfg.appId);
+      }
+    };
+
+    if (openConfigBtn) openConfigBtn.addEventListener('click', openModal);
+    if (openSettingsConfigBtn) openSettingsConfigBtn.addEventListener('click', openModal);
+    if (closeConfigBtn && configModal) {
+      closeConfigBtn.addEventListener('click', () => {
+        configModal.style.display = 'none';
+      });
+    }
+
+    // Firebase Config Form submit
+    const configForm = document.getElementById('firebaseConfigForm');
+    if (configForm) {
+      configForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const apiKey = document.getElementById('cfgApiKey')?.value?.trim();
+        const projectId = document.getElementById('cfgProjectId')?.value?.trim();
+        const authDomain = document.getElementById('cfgAuthDomain')?.value?.trim();
+        const storageBucket = document.getElementById('cfgStorageBucket')?.value?.trim();
+        const appId = document.getElementById('cfgAppId')?.value?.trim();
+
+        if (!apiKey || !projectId) {
+          if (window.showToast) window.showToast('❌ API Key and Project ID are required.');
+          return;
+        }
+
+        try {
+          if (window.FirebaseAuthService) {
+            window.FirebaseAuthService.saveConfig({
+              apiKey,
+              projectId,
+              authDomain: authDomain || `${projectId}.firebaseapp.com`,
+              storageBucket: storageBucket || `${projectId}.appspot.com`,
+              appId: appId || ''
+            });
+            this.updateFirebaseBadge();
+            if (configModal) configModal.style.display = 'none';
+            if (window.showToast) window.showToast('🔥 Firebase credentials updated and reconnected!');
+          }
+        } catch (err) {
+          if (window.showToast) window.showToast(`❌ ${err.message}`);
+        }
+      });
+    }
+
+    // Firebase Config Reset button
+    const resetConfigBtn = document.getElementById('resetFirebaseConfigBtn');
+    if (resetConfigBtn) {
+      resetConfigBtn.addEventListener('click', () => {
+        if (confirm('Reset Firebase configuration to default demo settings?')) {
+          if (window.FirebaseAuthService) {
+            window.FirebaseAuthService.resetConfig();
+            this.updateFirebaseBadge();
+            if (configModal) configModal.style.display = 'none';
+            if (window.showToast) window.showToast('🔄 Firebase configuration reset to demo mode.');
+          }
+        }
+      });
+    }
+
     // PIN keypad clicks
     document.querySelectorAll('.pin-key[data-digit]').forEach(key => {
       key.addEventListener('click', () => {
@@ -122,7 +456,8 @@ const AdminController = {
     // Keyboard support for PIN entry
     document.addEventListener('keydown', (e) => {
       const lockScreen = document.getElementById('adminLockScreen');
-      if (!this.isAuthenticated && lockScreen && lockScreen.style.display !== 'none') {
+      const pinPanel = document.getElementById('staffPinPanel');
+      if (!this.isAuthenticated && lockScreen && lockScreen.style.display !== 'none' && pinPanel && pinPanel.style.display !== 'none') {
         if (e.key >= '0' && e.key <= '9') {
           this.handlePinInput(e.key);
         } else if (e.key === 'Backspace') {
@@ -209,7 +544,7 @@ const AdminController = {
 
         if (window.CafeDB) {
           window.CafeDB.setPin(newPin);
-          if (window.showToast) window.showToast('✅ Admin PIN updated successfully!');
+          if (window.showToast) window.showToast('✅ Station PIN updated successfully!');
           changePinForm.reset();
         }
       });
